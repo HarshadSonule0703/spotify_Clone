@@ -17,6 +17,7 @@ body{
 }
 .right{
     width: 75vw;
+    
 }
 .home ul li{
     display: flex;
@@ -27,10 +28,15 @@ body{
     font-weight: bold;
 }
 .home{
-    
-
 }
+
 /* **********************Library Section************************ */
+
+.library{
+    min-height: 75vh;
+    position: relative;
+}
+
 .heading{
     display: flex;
     gap: 15px;
@@ -40,10 +46,110 @@ body{
     font-weight: bold;
     align-items: center;
     font-size: 13px;
-    
+
 }
 
 .heading img{
     width: 30px;
+}
+
+.footer{
+    display: flex;
+    font-size: 8px;
+    color: grey;
+    gap: 13px;
+    position: absolute;
+    bottom: 0;
+    padding: 10px 0;
+}
+.footer a{
+    color: grey;
+}
+.right{
+    margin: 16px 0 ;
+}
+.header{
+
+    height: 65px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(34, 34, 34);
+}
+.header > *{
+    padding: 20px;
+    
+}
+.spotifyPlaylist{
+    padding: 16px;
+}
+.spotifyPlaylist .card-container{
+    margin: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height: 60vh;
+
+}
+.spotifyPlaylist .card{
+    width: 175px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #252525;
+    position: relative;
+
+}
+.card *{
+    padding-top: 10px;
+    
+}
+
+.spotifyPlaylist img{
+    width: 100%;
+    object-fit: contain;
+}
+.card{
+    position: relative;
+}
+.card .play svg{
+    
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 17px;
+    top: 170px;
+    opacity: 0;
+
+}
+.button > *{
+    margin: 0 12px;
+}
+.signup{
+    background-color: rgb(34, 34, 34);
+    color: rgb(133, 131, 131);
+    font-weight: bold;
+    border: none;
+    outline: non;
+}
+.signup:hover{
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+.login{
+    background-color: white;
+    border: 1px solid rgb(34, 34, 34);
+    border-radius: 22px;
+    color: black;
+    padding: 10px ;
+    width: 79px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.login:hover{
+    font-weight: bold;
+    padding:11px;
+    font-size: 15px;
 }
 

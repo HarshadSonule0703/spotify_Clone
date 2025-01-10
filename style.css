@@ -61,11 +61,15 @@ body{
     position: absolute;
     bottom: 0;
     padding: 10px 0;
+    /* margin-top: 34px; */
+    /*  */
+    /* border: 2px solid blue; */
 }
 .footer a{
     color: grey;
 }
 .right{
+    position: relative; 
     margin: 16px 0 ;
 }
 .header{
@@ -152,4 +156,81 @@ body{
     padding:11px;
     font-size: 15px;
 }
+.spotifyPlaylist{
+    
 
+}
+.playbar{
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(126, 150, 126);
+    width: 90%;
+    padding: 12px;
+
+}
+.songbutton{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+.songbutton img{
+    color: white;
+    
+    width: 20px;
+    height: 20px;
+}
+
+.songList ul{
+    padding: 0 12px;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+.songList ul li{
+    list-style-type: decimal;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    cursor: pointer;
+    width: 100%;
+    padding: 12px 0;
+    border: 1px solid white;
+    margin: 5px 0;
+    padding: 13px;
+    border-radius: 5px;
+    align-self: self-start;
+    font-size: 8px;
+    margin-right: 16px;
+    height: 20px;
+    right: 7px;
+    
+}
+
+.playnow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#playsvg{
+    height: 20px;
+    width: 20px;
+    align-self: center;
+    
+    
+}
+.playnow span{
+    font-size: 10px;
+    width: px;
+    padding: 10px; 
+}
+/* .songList .info{
+    font-size: 8px;
+    width: 80px;
+} */
+
+.songList {
+    height: 644px;
+    overflow: auto;
+    margin: 44px 0px;
+    padding: 44px 0;
+}

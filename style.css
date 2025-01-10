@@ -57,7 +57,7 @@ body{
     display: flex;
     font-size: 8px;
     color: grey;
-    gap: 13px;
+    gap: 10px;
     position: absolute;
     bottom: 0;
     padding: 10px 0;
@@ -161,12 +161,14 @@ body{
 
 }
 .playbar{
-    position: absolute;
-    bottom: 0;
-    background-color: rgb(126, 150, 126);
+    position: fixed;
+    bottom: 30px;
+    background-color: rgb(215, 214, 214);
     width: 90%;
     padding: 12px;
-
+    width: 70vw;
+    border-radius: 10px;
+    height: 40px;
 }
 .songbutton{
     display: flex;
@@ -229,8 +231,31 @@ body{
 } */
 
 .songList {
-    height: 644px;
+    height: 344px;
     overflow: auto;
-    margin: 44px 0px;
-    padding: 44px 0;
+    margin-bottom: 34px;
+    /* padding: 44px 0; */
+}
+.seekbar{
+    height: 2px;
+    width: 98%;
+    background:  black;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    margin: 6px;
+
+}
+.circle{
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
+    background-color: black;
+    position: relative;
+    bottom: 6px;
+    left: 0%;
+    transition: left 0.5s;
+}
+.songbutton img{
+    cursor: pointer;
 }

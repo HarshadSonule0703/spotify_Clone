@@ -1,9 +1,22 @@
 console.log("let's write javaScript");
 let currentSong = new Audio();
 
+function secondsToMinutesSeconds(seconds) {
+    if (isNaN(seconds) || seconds < 0) {
+        return "00:00";
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+    return `${formattedMinutes}:${formattedSeconds}`;
+}
 
 async function getSongs(){
-    let a = await fetch("http://127.0.0.1:5500/songss/")
+    let a = await fetch("/songss/")
     let response = await a.text()
     console.log(response)
     let div = document.createElement("div")
@@ -20,17 +33,25 @@ async function getSongs(){
     
 }
 
-const playMusic =(track)=>{
-    currentSong.src = "/songss/" + track
-    currentSong.play()
-    play.src  = "pause.svg"
+const playMusic =(track, pause = false)=>{
+    currentSong.src = "songss/" + track
+    if(!pause){
+        currentSong.play().catch(err => console.error("Audio Error:", err));
+         play.src  = "pause.svg"
+    }
+   
+    document.querySelector(".songinfo").innerHTML = decodeURI(track); 
+    document.querySelector(".songtime").innerHTML = "00:00 / 00:00"
+    // console.log(track)
+    // console.log(document.querySelector("songtime").innerHTML = "00:00 / 00:00")
 }
 
 async function main(){
-
+   
 
     //get the list of all song
     let songs = await getSongs()
+    playMusic(songs[0])
     console.log(songs)
     //show all the songs in the playlist
     let songUL = document.querySelector(".songList").getElementsByTagName("ul")[0]
@@ -46,6 +67,7 @@ async function main(){
                                 <img id="playsvg" src="play.svg" alt=""></div>
                             </div> </li>`;
     }
+    playMusic(songs[0], true)
 
     //Attach an event listner to each song
    Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach(e => {
@@ -65,6 +87,28 @@ async function main(){
         currentSong.pause()
         play.src = "play.svg"
     }
+   })
+   //listen for time update
+   currentSong.addEventListener("timeupdate", ()=>{
+    console.log(currentSong.currentSong , currentSong.duration);
+    document.querySelector(".songtime").innerHTML =
+     `${secondsToMinutesSeconds(currentSong.currentTime)}/${
+        secondsToMinutesSeconds(currentSong.duration)}`
+
+        document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 +"%";
+   })
+   
+   //add an event listner to seekbar
+   document.querySelector(".seekbar").addEventListener("click", e => {
+    let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+    document.querySelector(".circle").style.left = percent + "%";
+    currentSong.currentTime = ((currentSong.duration) * percent) / 100
+   })
+
+   //add an event listner for hamburger
+   document.querySelector(".hamburger").addEventListener("click", () => {
+    document.querySelector(".left").style.left = "0"
+
    })
 
 }
